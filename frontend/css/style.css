@@ -1,0 +1,339 @@
+:root {
+    /* Phase 1: 1960s IBM / Corporate Retro-Futurism */
+    --slate: #2C3E50;
+    --navy: #1A252F;
+    --beige: #F5F5DC;
+    --teak: #5C3A21;
+    --teak-highlight: #7D4F2D;
+    --paper: #EAE6DF;
+    
+    /* Phase 2: 1980s Terminal (Cassette Futurism) */
+    --terminal-bg: #0A1108;
+    --terminal-green: #39FF14;
+    --terminal-flicker: rgba(57, 255, 20, 0.1);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: var(--paper);
+    transition: background-color 0.2s;
+}
+
+/* =====================================
+   PHASE 1: CORPORATE IBM / MAD MEN
+   ===================================== */
+#corporate-ui {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    opacity: 1;
+    transition: opacity 0.1s;
+}
+
+#corporate-ui.hidden {
+    display: none;
+}
+
+.teak-border {
+    height: 16px;
+    background: linear-gradient(to right, var(--teak), var(--teak-highlight), var(--teak));
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.teak-border-bottom {
+    height: 24px;
+    background: linear-gradient(to right, var(--teak), var(--teak-highlight), var(--teak));
+    box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+    margin-top: auto;
+}
+
+.corporate-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.corp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 2px solid var(--slate);
+    margin-bottom: 3rem;
+}
+
+.logo-grid {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-mark {
+    background: var(--navy);
+    color: var(--beige);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.logo-text {
+    color: var(--navy);
+    font-size: 28px;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.corp-nav a {
+    text-decoration: none;
+    color: var(--slate);
+    font-weight: 600;
+    margin-left: 2rem;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 4rem 0;
+}
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(var(--slate) 1px, transparent 1px), linear-gradient(90deg, var(--slate) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.05;
+    z-index: 0;
+}
+
+.hero-content {
+    flex: 1;
+    z-index: 1;
+    padding-right: 4rem;
+}
+
+.hero h2 {
+    font-size: 4rem;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--slate);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.access-btn {
+    background: var(--navy);
+    color: var(--paper);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+.access-btn:hover {
+    background: var(--slate);
+}
+
+.access-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.hero-graphic {
+    flex: 1;
+    position: relative;
+    height: 400px;
+    z-index: 1;
+}
+
+.geo-circle {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: var(--slate);
+    right: 50px;
+    top: 50px;
+    opacity: 0.1;
+}
+
+.geo-rect {
+    position: absolute;
+    width: 180px;
+    height: 300px;
+    background: var(--teak);
+    right: 150px;
+    top: 20px;
+    mix-blend-mode: multiply;
+    opacity: 0.8;
+}
+
+.geo-line {
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: var(--navy);
+    top: 200px;
+    right: 0;
+}
+
+/* =====================================
+   TRANSITION / GLITCH OVERLAY
+   ===================================== */
+#glitch-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    mix-blend-mode: difference;
+}
+
+.glitching {
+    animation: crtSwitchOff 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes crtSwitchOff {
+    0%   { opacity: 0; transform: scale(1); filter: invert(0); }
+    10%  { opacity: 1; transform: scale(1.02); filter: invert(1) hue-rotate(90deg); }
+    15%  { opacity: 0; filter: invert(0); }
+    20%  { opacity: 1; transform: scaleY(0.01) scaleX(1); background: var(--terminal-green); }
+    40%  { opacity: 1; transform: scaleY(0.01) scaleX(1); }
+    60%  { opacity: 1; transform: scaleY(0.01) scaleX(0.01); background: white; }
+    80%  { opacity: 1; transform: scaleY(0) scaleX(0); }
+    100% { opacity: 1; transform: scale(1); background: var(--terminal-bg); }
+}
+
+/* =====================================
+   PHASE 2: 1980s DOS TERMINAL
+   ===================================== */
+#terminal-ui {
+    background-color: var(--terminal-bg);
+    color: var(--terminal-green);
+    font-family: 'Courier Prime', Courier, monospace;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+#terminal-ui.active {
+    display: block;
+    animation: fadeIn 0.1s ease-in 0.8s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.crt-scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0) 50%,
+        rgba(0,0,0,0.1) 50%,
+        rgba(0,0,0,0.1)
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 9998;
+    mix-blend-mode: overlay;
+}
+
+.terminal-content {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-shadow: 0 0 5px var(--terminal-flicker);
+}
+
+.boot-line {
+    margin: 0.5rem 0;
+}
+
+.boot-line.loading::after {
+    content: '...';
+    animation: typing 1.5s steps(3, end) infinite;
+}
+
+@keyframes typing {
+    0%, 100% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+}
+
+.input-line {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.input-line.hidden {
+    display: none;
+}
+
+.prompt {
+    margin-right: 0.5rem;
+}
+
+.cursor {
+    width: 12px;
+    height: 1.2rem;
+    background-color: var(--terminal-green);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
